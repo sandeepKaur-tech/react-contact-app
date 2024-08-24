@@ -1,6 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 class AddContact extends React.Component{
+  handleRedirect = () => {
+    // Use window.location to navigate
+    window.location.href = '/'; // or any path you want to navigate to
+  };
   state={
     name:'',
     email:'',
@@ -10,16 +16,19 @@ class AddContact extends React.Component{
     if(this.state.name === '' && this.state.email==='')
     {
       alert('all fields are empty')
-      return
+      return 
     }
+  
     this.props.addContactHandler(this.state);
     this.setState({name:'', email:''})
+  
   }
   render()  
 {
         return(
             <div class='ui main'>
-                <h2>Add Contact</h2>
+                <h4 style = {{paddingTop:'100px'}}>Add Contact</h4>
+               
                 <form onSubmit={this.add} class='ui form'>
                   
                     <div className="field">
@@ -31,7 +40,8 @@ class AddContact extends React.Component{
                         <label>Email</label>
                         <input type="email"  value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})} name= 'email' placeholder="name"></input>
                     </div>
-                    <button type='submit'  className="ui button blue">Add</button>
+                    <button type='submit' onClick={this.handleRedirect} className="ui button blue">Add</button>
+                    
                 </form>
             </div>
         )
