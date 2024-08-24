@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import Header from './Header'
 import AddContact from './AddContact'
 import ContactList from './ContactList'
+import ContactDetail from "./ContactDetail";
 
 function App() {
    const LOCAL_STORAGE_KEY= "contacts";
@@ -38,6 +39,7 @@ return(
             <Routes>
             <Route path="/" element={<ContactList contacts= {contacts} getContactId ={removeContactHandler}/>} />
             <Route path="/add" element={<AddContact addContactHandler={addContactHandler}/>} />
+            <Route path="/contact/:id"  element = {<ContactDetail/>} />
             </Routes>
        </Router>
     </div>)
